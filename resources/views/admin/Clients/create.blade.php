@@ -1,57 +1,38 @@
 @extends('layouts.master')
 
 @section('content')
-
     <div class="container">
-
         <div class="page-inner">
             <div
-                class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
-                <div>
-                <h3 class="fw-bold mb-3">listes des clients</h3>
-                </div>
-                <div class="ms-md-auto py-2 py-md-0">
-                <a href="{{ route('Clients.create') }}" class="btn btn-primary btn-round">Ajouter de nouveaux clients</a>
-                </div>
+            class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
+            <div>
+            <h3 class="fw-bold mb-3">listes des clients</h3>
             </div>
-            <div class="container mt-6">
-                <table class="table">
-                <thead>
-                    <tr>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Contact</th>
-                    <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>john@example.com</td>
-                    <td>
-                        <a href="#" class="btn btn-primary btn-round">Modifier</a>
-                        <a href="#" class="btn btn-danger btn-round">
-                            <i class="fas fa-trash-alt"></i>
-                        </a>
-                    </td>
-                    </tr>
-                </tbody>
-                </table>
+            <div class="ms-md-auto py-2 py-md-0">
+            <a href="{{ route('Clients.create') }}" class="btn btn-primary btn-round">Ajouter de nouveaux clients</a>
             </div>
+        </div>
+        <form action="{{ route('Clients.store') }}" method="POST" class="mt-4">
+            @csrf
+            <div class="mb-3">
+                <label for="nom" class="form-label">Nom</label>
+                <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="prenom" class="form-label">Prénom</label>
+                <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Prénom" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="contact" class="form-label">Contact</label>
+                <input type="text" class="form-control" id="contact" name="contact" placeholder="Contact" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-round">Enregistrer</button>
+        </form>
+
         </div>
     </div>
-    {{-- <div class="container">
-        <div class="page-inner">
-            <form action="{{ route('Clients.store') }}" method="POST">
-                @csrf
-                <input type="text" name="nom" placeholder="Nom" required>
-                <input type="text" name="prenom" placeholder="Prénom" required>
-                <input type="text" name="contact" placeholder="Contact" required>
-                <button type="submit">Enregistrer</button>
-            </form>
-        </div>
-    </div> --}}
-    
 @endsection
 

@@ -36,7 +36,7 @@ class ClientsController extends Controller
 
             $request->validate([
                 'nom' => 'required',
-                'prenom' => 'required|unique:clients',
+                'prenom' => 'required',
                 'contact' => 'required',
             ]);
 

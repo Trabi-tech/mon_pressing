@@ -31,7 +31,7 @@ Route::get('/dashboard', function () {
 Route::controller(ClientsController::class)->group(function () {
     Route::get('/Clients', 'index')->name('Clients.index');
     Route::get('/Clients/create', 'create')->name('Clients.create');
-    Route::get('/Clients/store', 'store')->name('Clients.store');
+    Route::post('/Clients/store', 'store')->name('Clients.store');
 });
 
 });
