@@ -8,9 +8,6 @@
             <div>
             <h3 class="fw-bold mb-3">listes des clients</h3>
             </div>
-            <div class="ms-md-auto py-2 py-md-0">
-            <a href="{{ route('Clients.create') }}" class="btn btn-primary btn-round">Ajouter de nouveaux clients</a>
-            </div>
         </div>
         <form action="{{ route('Clients.store') }}" method="POST" class="mt-4">
             @csrf

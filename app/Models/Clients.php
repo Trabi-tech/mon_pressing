@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
+
 class Clients extends Model
 {
-
     public static function generateSlugusers()
     {
         $slugusers = Str::random(10);

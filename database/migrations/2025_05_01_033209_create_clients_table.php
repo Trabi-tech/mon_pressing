@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('slug_client')->unique()->nullable();
             $table->timestamps();
         });
-
     }
 
     /**

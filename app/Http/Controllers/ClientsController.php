@@ -17,7 +17,10 @@ class ClientsController extends Controller
         // Récupérer l'utilisateur connecté
         $user = Auth::user();
 
-        return view('admin.Clients.index');
+         // Récupérer les joueurs associés à cet utilisateur
+        $clients = $user->clients;
+
+        return view('admin.Clients.index', compact('clients'));
     }
 
     public function create()

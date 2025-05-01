@@ -33,17 +33,19 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>John</td>
-                      <td>Doe</td>
-                      <td>john@example.com</td>
-                      <td>
-                        <a href="#" class="btn btn-primary btn-round">Modifier</a>
-                        <a href="#" class="btn btn-danger btn-round">
-                            <i class="fas fa-trash-alt"></i>
-                          </a>
-                      </td>
-                    </tr>
+                    @foreach ($clients as $client)
+                        <tr>
+                        <td>{{ $client->nom }}</td>
+                        <td>{{ $client->prenom }}</td>
+                        <td>{{ $client->contact }}</td>
+                        <td>
+                            <a href="#" class="btn btn-primary btn-round">Modifier</a>
+                            <a href="#" class="btn btn-danger btn-round">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </td>
+                        </tr>
+                    @endforeach
                   </tbody>
                 </table>
             </div>
