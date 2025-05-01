@@ -26,11 +26,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
-
 })->name('dashboard');
 
 Route::controller(ClientsController::class)->group(function () {
     Route::get('/Clients', 'index')->name('Clients.index');
+    Route::get('/Clients/create', 'create')->name('Clients.create');
+    Route::get('/Clients/store', 'store')->name('Clients.store');
 });
 
 });

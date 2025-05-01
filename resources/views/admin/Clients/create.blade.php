@@ -2,14 +2,6 @@
 
 @section('content')
 
-    <style>
-        .table th, .table td {
-            width: 25%;
-            text-align: center;
-            /* vertical-align: middle; */
-        }
-    </style>
-
     <div class="container">
 
         <div class="page-inner">
@@ -24,30 +16,42 @@
             </div>
             <div class="container mt-6">
                 <table class="table">
-                  <thead>
+                <thead>
                     <tr>
-                      <th>Nom</th>
-                      <th>Prénom</th>
-                      <th>Contact</th>
-                      <th></th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Contact</th>
+                    <th></th>
                     </tr>
-                  </thead>
-                  <tbody>
+                </thead>
+                <tbody>
                     <tr>
-                      <td>John</td>
-                      <td>Doe</td>
-                      <td>john@example.com</td>
-                      <td>
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td>john@example.com</td>
+                    <td>
                         <a href="#" class="btn btn-primary btn-round">Modifier</a>
                         <a href="#" class="btn btn-danger btn-round">
                             <i class="fas fa-trash-alt"></i>
-                          </a>
-                      </td>
+                        </a>
+                    </td>
                     </tr>
-                  </tbody>
+                </tbody>
                 </table>
             </div>
         </div>
     </div>
-
+    {{-- <div class="container">
+        <div class="page-inner">
+            <form action="{{ route('Clients.store') }}" method="POST">
+                @csrf
+                <input type="text" name="nom" placeholder="Nom" required>
+                <input type="text" name="prenom" placeholder="Prénom" required>
+                <input type="text" name="contact" placeholder="Contact" required>
+                <button type="submit">Enregistrer</button>
+            </form>
+        </div>
+    </div> --}}
+    
 @endsection
+

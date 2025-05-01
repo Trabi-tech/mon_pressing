@@ -55,7 +55,7 @@
               <ul class="nav nav-collapse">
                 <li>
                   <a href="{{ route('Clients.index') }}">
-                    <span class="sub-item">Clients</span>
+                    <span class="sub-item">Espace Clients</span>
                   </a>
                 </li>
                 <li>

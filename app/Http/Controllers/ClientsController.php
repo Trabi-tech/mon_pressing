@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Clients;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -19,12 +20,9 @@ class ClientsController extends Controller
         return view('admin.Clients.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('admin.Clients.create');
     }
 
     /**
@@ -32,7 +30,28 @@ class ClientsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        {
+            // Récupérer l'utilisateur connecté
+            $user = Auth::user();
+
+            $request->validate([
+                'nom' => 'required',
+                'prenom' => 'required|unique:clients',
+                'contact' => 'required',
+            ]);
+
+            $data['sulgusers'] = Clients::generateSlugusers();
+
+            $client = new Clients();
+            $client->user_id = $user->id;
+            $client->nom = $request->nom;
+            $client->prenom = $request->prenom;
+            $client->contact = $request->contact;
+            $client->slug_client = $data['sulgusers'];
+            $client->save();
+
+            return redirect()->route('Clients.index');
+        }
     }
 
     /**
