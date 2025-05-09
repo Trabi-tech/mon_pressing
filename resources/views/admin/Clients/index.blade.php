@@ -39,8 +39,8 @@
                         <td>{{ $client->prenom }}</td>
                         <td>{{ $client->contact }}</td>
                         <td>
-                            <a href="#" class="btn btn-primary btn-round">Modifier</a>
-                            <a href="#" class="btn btn-danger btn-round">
+                            <a href="{{ route('Clients.edit', $client->slug_client) }}" class="btn btn-primary btn-round">Modifier</a>
+                            <a href="{{ route('Clients.destroy', $client->slug_client) }}" class="btn btn-danger btn-round">
                                 <i class="fas fa-trash-alt"></i>
                             </a>
                         </td>

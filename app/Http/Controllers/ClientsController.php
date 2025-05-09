@@ -68,24 +68,47 @@ class ClientsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($slug)
     {
-        //
+        $client = Clients::where('slug_client',$slug)->firstOrFail();
+
+        return view('admin.clients.edit', compact('client'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+
+        $data = $request->validate([
+            'nom' => 'required',
+            'prenom' => 'required',
+            'contact' => 'required',
+        ]);
+
+        $client = Clients::where('slug_client',$request->slug_client)->firstOrFail();
+
+        $data['sulgusers'] = Clients::generateSlugusers();
+
+        $client->nom = $request->nom;
+        $client->prenom = $request->prenom;
+        $client->contact = $request->contact;
+        $client->slug_client = $data['sulgusers'];
+        $client->save();
+
+        return redirect()->route('Clients.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($slug)
     {
-        //
+        $client = Clients::where('slug_client',$slug)->firstOrFail();
+
+        $client->delete();
+
+        return redirect()->route('Clients.index');
     }
 }
