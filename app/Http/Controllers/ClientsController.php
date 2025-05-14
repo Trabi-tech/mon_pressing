@@ -60,9 +60,11 @@ class ClientsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($slug)
     {
-        //
+        $client = Clients::where('slug_client',$slug)->firstOrFail();
+
+        return view('admin.clients.show', compact('client'));
     }
 
     /**

@@ -32,6 +32,7 @@ Route::controller(ClientsController::class)->group(function () {
     Route::get('/Clients', 'index')->name('Clients.index');
     Route::get('/Clients/create', 'create')->name('Clients.create');
     Route::post('/Clients/store', 'store')->name('Clients.store');
+    Route::get('/Clients/show/{slug}', 'show')->name('Clients.show');
     Route::get('/Clients/edit/{slug}', 'edit')->name('Clients.edit');
     Route::post('/Clients/update', 'update')->name('Clients.update');
     Route::get('/Clients/{slug}', 'destroy')->name('Clients.destroy');
