@@ -22,4 +22,9 @@ class Clients extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function factures()
+    {
+        return $this->hasMany(Facture::class);
+    }
 }
