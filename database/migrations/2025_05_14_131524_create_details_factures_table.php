@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('facture_id')->constrained()->onDelete('cascade');
             $table->foreignId('types_vetements_id')->constrained()->onDelete('cascade');
+            $table->foreignId('categorie_id')->constrained()->onDelete('cascade');
             $table->integer('quantite')->default(1);
             $table->decimal('prix_unitaire', 8, 2)->default(0);
             $table->decimal('sous_total', 10, 2)->default(0);

@@ -24,7 +24,7 @@ class Clients extends Model
     }
 
     public function factures()
-    {
-        return $this->hasMany(Facture::class);
-    }
+{
+    return $this->hasMany(Facture::class, 'client_id'); // Assure-toi bien de 'client_id' ici
+}
 }

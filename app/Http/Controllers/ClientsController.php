@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Clients;
+use App\Models\Facture;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -62,9 +63,10 @@ class ClientsController extends Controller
      */
     public function show($slug)
     {
-        $client = Clients::where('slug_client',$slug)->firstOrFail();
+        $client = Clients::where('slug_client', $slug)->firstOrFail();
+        $factures = $client->factures()->latest()->get(); // Assure-toi que la relation est définie
 
-        return view('admin.clients.show', compact('client'));
+        return view('admin.clients.show', compact('client', 'factures'));
     }
 
     /**

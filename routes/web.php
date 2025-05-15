@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\{
     ClientsController,
-
+    FactureController,
 };
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +28,7 @@ Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->name('dashboard');
 
+
 Route::controller(ClientsController::class)->group(function () {
     Route::get('/Clients', 'index')->name('Clients.index');
     Route::get('/Clients/create', 'create')->name('Clients.create');
@@ -36,6 +37,11 @@ Route::controller(ClientsController::class)->group(function () {
     Route::get('/Clients/edit/{slug}', 'edit')->name('Clients.edit');
     Route::post('/Clients/update', 'update')->name('Clients.update');
     Route::get('/Clients/{slug}', 'destroy')->name('Clients.destroy');
+});
+
+Route::controller(FactureController::class)->group(function () {
+    Route::get('/Factures/create/{slug}', 'create')->name('Factures.create');
+    Route::post('/Factures/store', 'store')->name('Factures.store');
 });
 
 });

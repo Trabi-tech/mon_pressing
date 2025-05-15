@@ -9,6 +9,14 @@ class Facture extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'numero_facture',
+        'client_id',
+        'date_facture',
+        'total',
+        // ajoute ici d'autres champs si nécessaire
+    ];
+
     protected static function booted()
     {
         static::creating(function ($facture) {
@@ -21,7 +29,7 @@ class Facture extends Model
 
     public function client()
     {
-        return $this->belongsTo(Clients::class);
+        return $this->belongsTo(Clients::class, 'client_id'); // Utilise bien 'client_id'
     }
 
     public function details()

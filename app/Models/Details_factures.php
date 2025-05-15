@@ -9,6 +9,14 @@ class Details_factures extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'facture_id',
+        'categorie_id',
+        'types_vetements_id',
+        'quantite',
+        'prix_unitaire',
+    ];
+
     public function facture()
     {
         return $this->belongsTo(Facture::class);

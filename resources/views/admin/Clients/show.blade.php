@@ -3,45 +3,59 @@
 @section('content')
 <div class="container">
     <div class="page-inner mt-4">
-        <h3 class="fw-bold mb-4">Détails du client</h3>
-        <div class="card">
-            <div class="card-body">
-                <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
-                    <div>
-                        <h3 class="fw-bold mb-3"></strong> {{ $client->nom }} {{ $client->prenom }}</h3>
-                    </div>
-                    <div class="ms-md-auto py-2 py-md-0">
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary btn-round" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Crée une facture
-                        </button>
-                    </div>
-                </div>
+        <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
+            <div>
+                <h3 class="fw-bold mb-3">Détails du client</h3>
+            </div>
+            <div class="ms-md-auto py-2 py-md-0">
+                <a href="{{ route('Factures.create', $client->slug_client) }}" class="btn btn-success btn-round">
+                    Créer une facture
+                </a>
             </div>
         </div>
-    </div>
 
-    <div class="ms-md-auto py-2 py-md-0 ">
-        <a href="{{ route('Clients.index') }}" class="btn btn-secondary mt-3">Retour à la liste</a>
+        <!-- Liste des factures -->
+        @if($client->factures->count())
+        <div class="card mt-4">
+            <div class="card-header bg-light">
+                <h5 class="fw-bold mb-0">Factures de {{ $client->nom }} {{ $client->prenom }}</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Date</th>
+                            <th>Total</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($client->factures as $facture)
+                            <tr>
+                                <td>{{ $facture->id }}</td>
+                                <td>{{ \Carbon\Carbon::parse($facture->date_facture)->format('d/m/Y') }}</td>
+                                <td>{{ number_format($facture->total, 2) }} FCFA</td>
+                                <td>
+                                    <a href="" class="btn btn-sm btn-info">Voir</a>
+                                    <a href="" class="btn btn-sm btn-secondary">PDF</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        @else
+        <div class="alert alert-info mt-4">
+            Ce client n’a pas encore de factures.
+        </div>
+        @endif
+
+        <!-- Bouton retour -->
+        <div class="ms-md-auto py-2 py-md-0 ">
+            <a href="{{ route('Clients.index') }}" class="btn btn-secondary mt-3">Retour à la liste</a>
+        </div>
     </div>
 </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-            ...
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-        </div>
-    </div>
 @endsection
