@@ -26,6 +26,7 @@
                         <tr>
                             <th>#</th>
                             <th>Date</th>
+                            <th>Numero facture</th>
                             <th>Total</th>
                             <th>Actions</th>
                         </tr>
@@ -35,6 +36,7 @@
                             <tr>
                                 <td>{{ $facture->id }}</td>
                                 <td>{{ \Carbon\Carbon::parse($facture->date_facture)->format('d/m/Y') }}</td>
+                                <td>{{ $facture->numero }}</td>
                                 <td>{{ number_format($facture->total, 2) }} FCFA</td>
                                 <td>
                                     <a href="" class="btn btn-sm btn-info">Voir</a>
