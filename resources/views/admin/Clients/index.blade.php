@@ -42,7 +42,7 @@
                             <a href="{{ route('Clients.show', $client->slug_client) }}" class="btn btn-info btn-sm" title="Détails">
                                 <i class="fas fa-eye"></i>
                               </a>
-                            <a href="{{ route('Clients.edit', $client->slug_client) }}" class="btn btn-primary btn-round">Modifier</a>
+                            <a href="{{ route('Clients.edit', parameters: $client->slug_client) }}" class="btn btn-primary btn-round">Modifier</a>
                             <a href="{{ route('Clients.destroy', $client->slug_client) }}" class="btn btn-danger btn-round">
                                 <i class="fas fa-trash-alt"></i>
                             </a>

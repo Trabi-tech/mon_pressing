@@ -39,7 +39,7 @@
                                 <td>{{ $facture->numero }}</td>
                                 <td>{{ number_format($facture->total, 2) }} FCFA</td>
                                 <td>
-                                    <a href="" class="btn btn-sm btn-info">Voir</a>
+                                    <a href="{{ route('Factures.show', $facture->id) }}" class="btn btn-sm btn-info">Voir</a>
                                     <a href="" class="btn btn-sm btn-secondary">PDF</a>
                                 </td>
                             </tr>

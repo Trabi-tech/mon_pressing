@@ -42,6 +42,8 @@ Route::controller(ClientsController::class)->group(function () {
 Route::controller(FactureController::class)->group(function () {
     Route::get('/Factures/create/{slug}', 'create')->name('Factures.create');
     Route::post('/Factures/store', 'store')->name('Factures.store');
+    Route::get('/Factures/{id}', 'show')->name('Factures.show');
+
 });
 
 });

@@ -77,9 +77,12 @@ class FactureController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $facture = Facture::with(['client', 'details.types_vetements', 'details.categorie'])->findOrFail($id);
+        $client = $facture->client;
+
+        return view('admin.Factures.show', compact('facture','client'));
     }
 
     /**

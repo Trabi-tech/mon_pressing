@@ -12,7 +12,7 @@ class Details_factures extends Model
     protected $fillable = [
         'facture_id',
         'categorie_id',
-        'types_vetements_id',
+        'types_vetement_id',
         'quantite',
         'prix_unitaire',
     ];
@@ -22,10 +22,16 @@ class Details_factures extends Model
         return $this->belongsTo(Facture::class);
     }
 
-    public function typeVetement()
+    public function categorie()
     {
-        return $this->belongsTo(types_vetements::class);
+        return $this->belongsTo(Categorie::class, 'categorie_id');
     }
+
+    public function types_vetements()
+    {
+        return $this->belongsTo(types_vetements::class, 'types_vetements_id');
+    }
+
 }
 
 
