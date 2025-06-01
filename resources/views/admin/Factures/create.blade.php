@@ -13,7 +13,15 @@
                     <label for="date" class="form-label">Date de la facture</label>
                     <input type="date" name="date_facture" class="form-control" required>
                 </div>
+
+                <div class="col-md-1"></div> <!-- ESPACE -->
+
+                <div class="col-md-4 mb-3">
+                    <label for="date" class="form-label">Date retrait</label>
+                    <input type="date" name="date_retrait" class="form-control" required>
+                </div>
             </div>
+
 
             <h5 class="fw-bold mt-4">Articles</h5>
             <div id="articles-container">

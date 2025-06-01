@@ -42,6 +42,7 @@ class FactureController extends Controller
         $validated = $request->validate([
             'client_id' => 'required|exists:clients,id',
             'date_facture' => 'required|date',
+            'date_retrait' => 'required|date',
             'total' => 'required|numeric',
             'categorie_id' => 'required|array',
             'type_vetement_id' => 'required|array',
@@ -53,6 +54,7 @@ class FactureController extends Controller
         $facture = new Facture();
         $facture->client_id = $request->client_id;
         $facture->date_facture = $request->date_facture;
+        $facture->date_retrait = $request->date_retrait;
         $facture->total = $request->total; // Ne pas oublier ce champ
         $facture->save();
 
@@ -84,6 +86,15 @@ class FactureController extends Controller
 
         return view('admin.Factures.show', compact('facture','client'));
     }
+
+
+    public function imprimer($id)
+    {
+        $facture = Facture::with(['client', 'details.types_vetements', 'details.categorie'])->findOrFail($id);
+
+        return view('admin.Factures.impression', compact('facture'));
+    }
+
 
     /**
      * Show the form for editing the specified resource.

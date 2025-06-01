@@ -46,26 +46,30 @@
             <h4 class="text-section">MENU</h4>
           </li>
           <li class="nav-item">
-            <a data-bs-toggle="collapse" href="#base">
-              <i class="fas fa-layer-group"></i>
-              <p>Gestion des Clients</p>
-              <span class="caret"></span>
+            <a data-bs-toggle="collapse" href="#base" aria-expanded="{{ request()->routeIs('Clients.*') ? 'true' : 'false' }}">
+                <i class="fas fa-layer-group"></i>
+                <p>Gestion des Clients</p>
+                <span class="caret"></span>
             </a>
-            <div class="collapse" id="base">
-              <ul class="nav nav-collapse">
-                <li>
-                  <a href="{{ route('Clients.index') }}">
-                    <span class="sub-item">Espace Clients</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="components/buttons.html">
-                    <span class="sub-item">Buttons</span>
-                  </a>
-                </li>
-              </ul>
+
+            <div class="collapse {{ request()->routeIs('Clients.*') ? 'show' : '' }}" id="base">
+                <ul class="nav nav-collapse">
+                    <li class="nav-item {{ request()->routeIs('Clients.*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('Clients.index') }}">
+                            <i class="fas fa-users"></i>
+                            <span class="sub-item">Espace Clients</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="components/buttons.html">
+                            <i class="fas fa-square"></i>
+                            <span class="sub-item">Buttons</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
           </li>
+
           <li class="nav-item">
             <a data-bs-toggle="collapse" href="#sidebarLayouts">
               <i class="fas fa-th-list"></i>
