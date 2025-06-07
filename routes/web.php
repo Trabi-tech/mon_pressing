@@ -3,6 +3,8 @@
 use App\Http\Controllers\{
     ClientsController,
     FactureController,
+    DashboardController,
+    RendezVousController
 };
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +30,8 @@ Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->name('dashboard');
 
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
 
 Route::controller(ClientsController::class)->group(function () {
     Route::get('/Clients', 'index')->name('Clients.index');
@@ -45,6 +49,12 @@ Route::controller(FactureController::class)->group(function () {
     Route::get('/Factures/{id}', 'show')->name('Factures.show');
     Route::get('/factures/{facture}/imprimer', 'imprimer')->name('Factures.imprimer');
 });
+
+
+Route::controller(RendezVousController::class)->group(function () {
+    Route::get('/rendezvous', 'index')->name('rendezvous.index');
+});
+
 
 });
 

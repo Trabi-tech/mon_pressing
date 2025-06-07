@@ -27,7 +27,13 @@
     <div class="sidebar-wrapper scrollbar scrollbar-inner">
       <div class="sidebar-content">
         <ul class="nav nav-secondary">
-          <li class="nav-item active">
+            <li class="nav-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                <a href="{{ route('dashboard') }}">
+                    <i class="fas fa-home"></i>
+                    <p>Dashboard</p>
+                </a>
+            </li>
+          {{-- <li class="nav-item active">
             <a
               data-bs-toggle="collapse"
               href="#dashboard"
@@ -38,7 +44,7 @@
               <p>Dashboard</p>
 
             </a>
-          </li>
+          </li> --}}
           <li class="nav-section">
             <span class="sidebar-mini-icon">
               <i class="fa fa-ellipsis-h"></i>
@@ -52,7 +58,7 @@
                 <span class="caret"></span>
             </a>
 
-            <div class="collapse {{ request()->routeIs('Clients.*') ? 'show' : '' }}" id="base">
+            <div class="collapse {{ request()->routeIs('Clients.*', 'rendezvous.*') ? 'show' : '' }}" id="base">
                 <ul class="nav nav-collapse">
                     <li class="nav-item {{ request()->routeIs('Clients.*') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('Clients.index') }}">
@@ -60,14 +66,15 @@
                             <span class="sub-item">Espace Clients</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="components/buttons.html">
-                            <i class="fas fa-square"></i>
-                            <span class="sub-item">Buttons</span>
+                    <li class="nav-item {{ request()->routeIs('rendezvous.*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('rendezvous.index') }}">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span class="sub-item">Liste des rendez-vous</span>
                         </a>
                     </li>
                 </ul>
             </div>
+
           </li>
 
           <li class="nav-item">
@@ -91,7 +98,7 @@
               </ul>
             </div>
           </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a data-bs-toggle="collapse" href="#forms">
               <i class="fas fa-pen-square"></i>
               <p>Forms</p>
@@ -234,7 +241,7 @@
                 </li>
               </ul>
             </div>
-          </li>
+          </li> --}}
         </ul>
       </div>
     </div>
