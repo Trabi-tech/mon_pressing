@@ -17,6 +17,14 @@ class User extends Authenticatable
         return $this->hasMany(Clients::class);
     }
 
+
+
+    public function laverie()
+    {
+        return $this->hasOne(Laverie::class);
+    }
+
+
     use HasApiTokens, HasFactory, Notifiable;
 
     /**

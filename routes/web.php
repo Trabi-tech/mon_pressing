@@ -4,7 +4,8 @@ use App\Http\Controllers\{
     ClientsController,
     FactureController,
     DashboardController,
-    RendezVousController
+    RendezVousController,
+    LaverieController
 };
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -50,10 +51,17 @@ Route::controller(FactureController::class)->group(function () {
     Route::get('/factures/{facture}/imprimer', 'imprimer')->name('Factures.imprimer');
 });
 
-
 Route::controller(RendezVousController::class)->group(function () {
     Route::get('/rendezvous', 'index')->name('rendezvous.index');
 });
+
+Route::controller(LaverieController::class)->group(function () {
+    Route::get('/laverie/create', 'create')->name('laverie.create');
+    Route::post('/laverie/store', 'store')->name('laverie.store');
+    Route::get('/laverie/edit',  'edit')->name('laverie.edit');
+    Route::put('/laverie/{id}', 'update')->name('laverie.update');
+});
+
 
 
 });
