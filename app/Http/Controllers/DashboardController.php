@@ -11,9 +11,6 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->laverie === null) {
-            return redirect()->route('laverie.create');
-        }
         return view('dashboard');
     }
 

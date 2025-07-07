@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('laverie_id')->constrained()->onDelete('cascade'); // Ajout de la relation avec laveries
             $table->string('nom');
             $table->string('prenom');
             $table->string('contact');

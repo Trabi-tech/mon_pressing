@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('accueil');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -56,8 +56,6 @@ Route::controller(RendezVousController::class)->group(function () {
 });
 
 Route::controller(LaverieController::class)->group(function () {
-    Route::get('/laverie/create', 'create')->name('laverie.create');
-    Route::post('/laverie/store', 'store')->name('laverie.store');
     Route::get('/laverie/edit',  'edit')->name('laverie.edit');
     Route::put('/laverie/{id}', 'update')->name('laverie.update');
 });

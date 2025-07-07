@@ -48,6 +48,7 @@ class ClientsController extends Controller
 
             $client = new Clients();
             $client->user_id = $user->id;
+            $client->laverie_id = $user->laverie->id;
             $client->nom = $request->nom;
             $client->prenom = $request->prenom;
             $client->contact = $request->contact;
